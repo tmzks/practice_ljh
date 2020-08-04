@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="header">header</h1>
+    <h1 id="header1">header</h1>
+    <h1 id="header2">header</h1>
+    <h1 id="remove">REMOVE</h1>
+</body>
+<script>
+    //문서객체모델
+    // window.onload = function(){
+    //     let header = document.getElementById('header');
+    // }
+
+    //문서객체생성
+    // window.onload = function(){
+    //     let header = document.createElement('h1');
+    //     let textNode = document.createTextNode('hello dom');
+    // }
+    //아무런 결과도 나오지 않는다
+
+    //문서객체연결
+    // window.onload = function(){
+    //     let header = document.createElement('h1');
+    //     let textNode = document.createTextNode('hello dom');
+
+    //     header.appendChild(textNode);
+    //     document.body.appendChild(header);
+    // }
+
+    //문서객체만들기
+    // window.onload = function(){
+    //     let output = '';
+    //     output +='<ul>';
+    //     output += ' <li>js</li>';
+    //     output += ' <li>css</li>';
+    //     output += ' <li>html</li>';
+    //     output +='</ul>';
+
+    //     document.body.innerHTML = output; //html속성에 문자열을 할당한다.
+    // }
+
+
+    //textContent속성
+    // window.onload = function(){
+    //     let output = '';
+    //     output +='<ul>';
+    //     output += ' <li>js</li>';
+    //     output += ' <li>css</li>';
+    //     output += ' <li>html</li>';
+    //     output +='</ul>';
+
+    //     document.body.textContent = output; //html속성에 문자열을 할당한다.
+    //     document.body.textContent +='<h1>DOM</h1>';
+    // }
+
+    //<ul> <li>js</li> <li>css</li> <li>html</li></ul><h1>DOM</h1>라는 단순글자로 출력이된다
+
+    //getElementById
+        // window.onload = function(){
+        //     let header1 = document.getElementById('header1');
+        //     let header2 = document.getElementById('header2');
+        // }
+
+
+    //getElementsByTagName
+    // window.onload = function(){
+    //     let headers = document.getElementsByTagName('h1');
+
+    //     headers[0].innerHTML = 'with';
+    //     headers[1].innerHTML = 'with2';
+    // }
+    // getElementsByTagName속성은 배열이므로 인덱스번호로 호출을 해야한다.
+
+
+    //querySelector
+    // window.onload = function(){
+    //     //문서객체를 가져온다
+    //     let header1 = document.querySelector('#header1');
+    //     let header2 = document.querySelector('#header2');
+
+    //     //문서객체의 속성를 변경한다.
+    //     header1.innerHTML = 'gggg';
+    //     header2.innerHTML = 'ffff';
+    // }
+
+
+    //문서객체제거
+    window.onload = function(){
+        let remove = document.getElementById('remove');
+        document.body.removeChild(remove); //제거
+    }
+
+    
+</script>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+            width: 500px;
+            height: 500px;
+            border: 1px solid black;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: row;
+        }
+        .monitor{
+            display: inline-block;
+            height: 100%;
+            box-sizing: border-box;
+            flex-basis: 80%;
+        }
+        .controller{
+            display: inline-block;
+            flex-grow: 1;
+            height: 100%;
+            border-left: 1px solid black;
+        }
+        .upButtonBox{
+            height: 50%;
+            width: 100%;
+        }
+        .downButtonBox{
+            height: 50%;
+            width: 100%;
+            border-top: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="monitor" class="monitor">
+            7
+        </div>
+        <div class="controller">
+            <div class="upButtonBox">
+                <button id="up">Up</button>
+            </div>
+            <div class="downButtonBox">
+                <button id="down">Down</button>                
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    // Tv인스턴스의 chanel프로퍼티를 출력 
+    //<- 이녀석이 
+
+    function Controller(){
+        let chanel = 7;
+
+        this.upChanel = function(){
+            chanel += 1;
+            return this.getChanel();
+        }
+        this.downChanel = function(){
+            chanel -= 1;
+            return this.getChanel();
+        }
+        this.getChanel = function(){
+            return chanel;
+        }
+    }
+
+    function DisplayManager(control){
+        const contoller = control;
+        this.print = function(chanel){
+            const monitor = document.getElementById('monitor')
+            monitor.innerText = chanel;
+        }
+    }
+
+
+    let control = new Controller();
+    let samsung = new DisplayManager(control);
+
+</script>
+</html>

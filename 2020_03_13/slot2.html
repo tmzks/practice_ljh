@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>슬롯머신</h1>
+    <form>
+		숫자 : 
+		<input type="text" id="numb1" size="5">
+		<input type="text" id="numb2" size="5">
+        <input type="text" id="numb3" size="5">
+        <input type="button" id="btn1" value="start" onclick="">
+		<input type="button" id="btn2" value="stop" onclick="slotMachine()">
+		
+		
+	</form>
+</body>
+<script>
+    let random = Math.floor(Math.random()*10);
+    let money = 5000;
+    function slotMachine(){
+        let numbOne = document.getElementById('numb1').value;
+        let numbTwo = document.getElementById('numb2').value;
+        let numbThree = document.getElementById('numb3').value;
+
+        if(numbOne.value == numbTwo.value == numbThree){
+            money *= 10;
+            alert('축하합니다 1등입니다.');
+        }else{
+            alert('아쉽네요 다시 시도해주세요');
+            money -= 500;
+        }
+    }
+    function printRandom(){
+        let random = Math.floor(Math.random() * 10);
+        document.getElementById('numb1').value = random;
+        document.getElementById('numb2').value = random;
+        document.getElementById('numb3').value = random;
+    }
+
+</script>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input id="pushElement">
+    <button onclick="push()">push !</button>
+    <button onclick="pop()">pop !</button>
+</body>
+<script>
+
+    function StackType(){
+        const stack = [];
+        let top = -1;
+        this.push = (e)=>{
+           stack[++top] = e;
+        };
+        this.pop = ()=>{
+            return top < 0 ? "스택이 비었다" : stack[top--];
+        };
+        this.peek = ()=>{
+            return top < 0 ? "스택이 비었다" : stack[top];
+        }
+    }
+    const stack = new StackType();
+    
+    function push(){
+        let pushElement = document.getElementById('pushElement');
+        stack.push(pushElement.value);
+    }
+
+    function pop(){
+        console.log(stack.pop());
+    }
+</script>
+</html>

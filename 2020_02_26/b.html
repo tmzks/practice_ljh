@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="password" id="prevPassword" placeholder="prevPassword">
+    <input type="password" id="newPassword" placeholder="newPassword">
+    <button onclick="changePassword()" >비밀번호 변경</button>
+    <div id="message"></div>
+</body>
+<script>
+    let changePassword;
+    
+    {
+        let password = "1234";
+        changePassword = function(){
+            let prevPassword = document.getElementById("prevPassword");
+            let newPassword = document.getElementById("newPassword");
+            
+            if(password === prevPassword.value){
+                password = newPassword.value;
+                // alert("비밀번호가 변경되었습니다.");
+                printMessage(true);
+            }else{
+                // alert("비밀번호가 다릅니다.");
+                printMessage(false)
+            }
+            prevPassword.value = "";
+            newPassword.value = "";
+        }
+    }
+
+    function printMessage(bool){
+        let message = document.getElementById("message");
+        if(bool){
+            message.innerText = "비밀번호가 변경되었습니다.";
+            message.style.color = "black";
+        }else{
+            message.innerText = "기존비밀번호와 다릅니다.";
+            message.style.color = "red";
+        }
+    }
+    
+//예전 비밀번호에 입력한 값이 지금 비밀번호와 맞다면 새로운 비밀 번호로 변경하는 것
+//변경 
+//1. input을 두개 만든다.
+//2. 버튼을 만든다.  
+//3. 이벤트 함수를 만든다. 
+//4. password가 속한 블락에서 클로저를 형성한다. 
+//5. id가 prevPassword인 input의 통제권을 가져와서 변수선언을 한다
+//6. id가 newPassword인 input의 통제권을 가져와서 변수선언을 한다.
+//7. 가져온 통제권을 바탕으로 prevPassword변수의 value값과 password변수의 값이 같다면 newPassword에 새로운 value값으로 password값으로 변경해준다.
+//8.버튼클릭시 changePassword함수를 실행시키는 이벤트를 추가한다.
+
+//변경 후 메세지 출력 
+//1. input바로 p태그를 make
+//2. changPassword함수 밑에 printMessage 함수를 만든다.
+//3. changePassword함수 조건문에서 조건에 따라 printMessage함수의 어규먼트값을 불리언으로 달리 전달해준다.
+//4. 전달받은 불리언으로 조건문을 실행한다
+//5. true일 경우 비밀번호가 일치합니다를 출력
+//6. false일 경우 기존 비밀번호와 다릅니다를 출력
+</script>
+</html>

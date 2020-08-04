@@ -1,0 +1,40 @@
+
+//함수를 선언하면 함수에 식별자가 생긴다. 
+function dummyFunc(){
+
+}
+
+//
+const noNameFunc = function(){
+    console.log('hi');
+}
+
+noNameFunc();
+//함수표현식은 함수 이름을 생략할 수 있다는 점을 제외하면 선언과 문법적으로 같다. 
+
+//sum
+const sum = function(numb_1,numb_2){
+    return numb_1 + numb_2;
+}
+
+function sum(numb_1,numb_2){
+    return numb_1 + numb_2;
+}
+
+const result = sum(10,20); // 30; 
+
+//초기화 코드에서 주로 사용 된다. 
+//변수를 전역으로 선언하는 것을 피하기 위해서 입니다. 
+
+//화살표 함수는 es6에서 새로만든 문법으로 간단히 말해서 
+//function이라는 단어와 중괄호를 줄이려고 만든 단축문법이다. 
+
+//익명 함수다. 1가지의 차이점이 있다. 
+
+//iife로 이름을 전달받아 전역에 있는 name 변수에 할당하게끔 하는 함수를 만들어보세요 
+
+let name;
+
+(
+    
+)('leejongho');

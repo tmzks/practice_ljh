@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // var characters = prompt('사용할 비밀번호룰 입력해주세요', "6글자이상");
+    // if(characters.length<6){
+    //     alert('6글자 이상으로 입력하세요');
+    // }else{
+    //     alert("good");
+    // }
+
+    //html관련메서드
+// var string = "JavaScript";
+// var output = '';
+// output += 'anchor: ' +string.anchor() + '<br/>';
+// output += 'big: ' +string.big() + '<br/>';
+// output += 'blink: ' +string.blink() + '<br/>';
+// output += 'bold: ' +string.bold() + '<br/>';
+// output += 'fixed: ' +string.fixed() + '<br/>';
+// output += 'string: ' +string.fontcolor('red') + '<br/>';
+// output += 'fontsize: ' +string.fontsize(15) + '<br/>';
+// output += 'italics: ' +string.italics() + '<br/>';
+
+// document.write(output);
+
+//메서드체이닝
+//메서드를 줄줄이 사용하는것
+// var output = 'hello js';
+// output = output.toLowerCase().substring(0,10).anchor('name');
+// alert(output);
+
+// var array = [52,273,103,32];
+// array.sort(function(left,right){
+//     return left - right;
+// });
+
+// alert(array);
+//오름차순으로 정리
+
+//array객체의 요소제거
+// Array.prototype.remove = function(index){
+//     this.splice(index, 1);
+// }
+// var array = [52,273,103,32,274,129];
+// for(let i = array.length-1; i>=0; i--){
+//     if(array[i]>100){
+//         array.remove(i);
+//     }
+// }
+// alert(array);
+//52,32
+//숫자100이 넘는 배열의 요소가 모두 제거됨
+
+//date객체
+// var date = new Date(1991,11,9,2,24,23,1);
+// alert(date);
+
+//일주일후의 시간구하기
+// var date = new Date();
+// date.setDate(date.getDate()+7);
+// alert(date);
+
+//date객체의 to00string()메서드
+// var date = new Date(1995,6,26);
+// var output = '';
+// output += 'toDateString: ' + date.toDateString() + '\n';
+// output += 'toGMTString: ' + date.toGMTString() + '\n';
+// output += 'toLocaleDateString: ' + date.toLocaleDateString() + '\n';
+// output += 'toLocaleString: ' + date.toLocaleString() + '\n';
+// output += 'toLocaleTimeString: ' + date.toLocaleTimeString() + '\n';
+// output += 'toUTCString: ' + date.toUTCString() + '\n';
+// alert(output);
+
+//탐색메서드
+// var array = [1,2,3,4,5,5,4,3,2,1];
+// var output1 = array.indexOf(4);
+// var output2 = array.indexOf(8);
+// var output3 = array.lastIndexOf(4);
+// var output4 = array.lastIndexOf(4);
+// var output = '';
+// output += output1 + ':'+output2 + '\n';
+// output += output3 + ':'+output4;
+// alert(output);
+
+//map()메서드
+// var array = [1,2,3,4,5,6,7,8,9,10];
+// var output = array.map(function(element){
+//     return element * element;
+// });
+// alert(output);
+//각 요소를 변경해 새로운 배열을 리턴하는 메서드
+
+//every()메서드와 some()메서드
+// var array = [1,2,3,4,5,6,7,8,9,10];
+// function lessThanFive(e,i,arr){
+//     return e < 5;
+// }
+// function lessThanTwenty(e,i,arr){
+//     return e < 20;
+// }
+// var output1 = array.every(lessThanFive);
+// var output2 = array.every(lessThanTwenty);
+// var output3 = array.some(lessThanFive);
+// var output4 = array.some(lessThanTwenty);
+
+// var output = '';
+// output += output1 + ':' + output2 + '\n';
+// output += output3 + ':' + output4 + '\n';
+// alert(output);
+//every()메서드는 배열의 모든요소가 true를 리턴하면 true를 리턴, 아니면 false리턴
+//some()메서드는 배열의 요소중 적어도 하나이상의 함수에서 true를 리턴할 경우 true를 리턴
+
+//reduce()메서드 : 배열의 요소가 하나가 될 때까지 요소를 왼쪽부터 두 개씩 묶는 함수를 실행
+// var array = [1,2,3,4,5];
+// var result = array.reduce(function(prev,curr){
+//     return prev + curr;
+// });
+// alert(result);
+//15
+
+
+//json객체
+//자바스크립트 객체의 형태를 갖는 문자열을 뜻한다
+
+//json.stringfy()메서드 : 자바스크립트 객체를 json문자열로 변환합니다.
+// var object = {
+//     name:"이진욱",
+//     region:"부산광역시"
+// };
+// alert(JSON.stringify(object));
+
+//json.parse()메서드 : json문자열을 자바스크립트 객체로 변환한다.
+// var object = {
+//     name:"이진욱",
+//     region:"부산광역시"
+// };
+// var copy = JSON.parse(JSON.stringify(object));
+// alert(copy.name + ':' + copy.region);
+
+//화살표함수를 이용한 array객체의 메서드 활용
+var student = [
+    {이름 : '이진욱', 국어:87, 수학:98, 영어:88, 과학:95},
+    {이름 : '이진욱2', 국어:86, 수학:98, 영어:88, 과학:95},
+    {이름 : '이진욱3', 국어:85, 수학:98, 영어:88, 과학:95},
+    {이름 : '이진욱4', 국어:84, 수학:98, 영어:88, 과학:95}
+];
+var filterA = student.filter((item)=>item>90);
+console.log(filterA);
+</script>
+</html>

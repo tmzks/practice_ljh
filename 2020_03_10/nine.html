@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    //window객체
+    // let output = '';
+    // for(let key in window){
+    //     output += '#' + key + ':' + window[key] +'\n';
+    // }
+    // alert(output);
+
+    //open()메서드
+    // window.open('http://www.naver.com','child','width=600, height=300',true);
+    //팝업창이 뜬다
+
+    //open()메서드의 리턴값
+    // let child = window.open('','','width=600, height=300');
+    // child.document.write('<h1>from parent window</h1>');
+    //사파리에서 실행안됨 크롬에서 해야함
+
+    //window객체의 기본메서드
+    // let child = window.open('','','width=600, height=300');
+    // child.moveTo(0,0);
+    // setInterval(function(){
+    //     child.moveBy(10,10);
+    // },1000);
+    //왼쪽위를 0,0으로 위치시키고 1초마다 팝업창이 왼쪽10 오른쪽10씩 움직임 개신기
+
+    //screen객체
+    // let child = window.open('','','width=600, height=300');
+    // let width = screen.width;
+    // let height = screen.height;
+
+    // child.moveTo(0,0);
+    // child.resizeTo(width,height);
+
+    // setInterval(function(){
+    //     child.resizeBy(-20,20);
+    //     child.moveBy(10,10);
+    // },1000);
+    //브라우저크기를 화면에 일치시키는 방법
+
+    //location객체
+    // location = location;
+    // location.href = 'http://www.naver.com';
+
+    // location.assign('http://www.naver.com'); //현재위치로 이동합니다.
+    // location.replace('http://www.naver.com'); //현재위치로 이동합니다.
+    //차이점은 replace()메서드는 뒤로가기버튼사용이 불가능하다.
+
+
+    //navigator객체의 속성
+    // let output = '';
+    // for(let key in navigator){
+    //     output += '#' + key + ':' + navigator[key] +'\n';
+    // }
+    // alert(output);
+
+    //모바일장치구분
+    // let userAgency = navigator.userAgent;
+    // alert(userAgency);
+
+</script>
+</html>

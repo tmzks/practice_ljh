@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input id="input" placeholder="아무거나 넣어주세요">
+    <button onclick="enque()">Enque</button>
+    <button onclick="deque()">Deque</button>
+</body>
+<script>
+//enque버튼을 누르면 input에 있는 값을 queue에 담고 
+//deque버튼을 누르면 deque한 값을 콘솔로그로 찍어라 
+
+// function QueueType(count){
+//     const queue = [];
+//     const maxCount = count;
+//     let front = -1;
+//     let rear = -1;
+//     this.enque = function(item){
+//         if(isFull()){
+//             console.log('내부에 물건이 가득찼습니다.');
+//         }else{
+//             queue[++rear] = item;
+//         }
+//     }
+//     this.deque = function(){
+//         if(!isEmpty()){
+//             return queue[++front];
+//         }else{
+//             return "queue가 비어있습니다.";
+//         }
+//     }
+//     function isFull(){
+//         return rear + 1 === maxCount;
+//     }
+//     function isEmpty(){
+//         return front === rear;
+//     }
+// }
+
+function CircleQueueType(size){
+    let front =0;
+    let rear =0;
+    const queue = [];
+    const maxSize = size;
+
+    this.enque = function(item){
+        if(this.isFull()){
+            console.log('queue가 가특찼습니다.');
+        }else{
+            rear = (rear + 1)% maxSize;
+            queue[rear] = item;
+            console.log('아이탬이 삽입되었습니다.');
+        }
+    }
+    this.deque = function(){
+        if(this.isEmpty()){
+            return "큐가 비어있습니다.";
+        }else{
+            front = (front + 1) % maxSize;
+            return queue[front];
+        }
+    }
+    this.isFull = function(){
+        return front === (rear + 1)%maxSize;
+    }
+    this.isEmpty = function(){
+        return front === rear;
+    }
+}
+
+const queue = new CircleQueueType(4);
+function enque(){
+    let input = document.getElementById('input');
+    queue.enque(input.value);
+}
+function deque(){
+    console.log(queue.deque());
+}
+
+</script>
+</html>

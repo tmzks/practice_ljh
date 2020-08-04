@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //prompt : 문자열자료형을 입력할 때 사용하는 함수
+        //    var input =  prompt("message","def");
+        //    alert(input);
+
+        //confirm함수 : 불 자료형을 입력받을 때 사용하는 함수
+        // var input = confirm("수락하시겠습니까?");
+        // alert(input);
+        //확인 = true  취소 = false를 리턴
+
+        //비교연산자
+        // alert('' == false);
+        // alert('' == 0);
+        // alert(0 == false);
+        // alert('273' == 273);
+        //true
+        //자동으로 자료형이 변환되어 일어나는 현상
+
+        //일치연산자
+        // alert('' === false);
+        // alert('' === 0);
+        // alert(0 === false);
+        // alert('273' === 273);
+        //false
+        //좌변과 우변이 자료형부터 다르므로 모두 false출력
+
+        //switch조건문
+        // var input = Number(prompt("숫자를 입력하시오","숫자")); 
+        // switch(input%2){
+        //     case 0:
+        //     alert("짝수");
+        //     break;
+        //     case 1:
+        //     alert('홀수입니다');
+        //     break;
+        //     default:
+        //         alert("숫자가 아닙니다");
+        //         break;
+        // }
+        //break키워드는 switch조건문이나 반복문을 빠져나가려고 사용하는 키워드 별도의 중괄호가 필요하지 않는다.
+
+
+        //삼항연산자
+        // var input = prompt("숫자를 입력하시오","");
+        // var number = Number(input);
+
+        // (number > 0) ? alert("자연수입니다.") : alert("자연수가 아닙니다");
+        //삼항연산자는 코드를 짧게 쓸려는 개발자가 자주 사용한다
+
+
+        //함수
+        //코드를 묶고 이름을 붙혀 쉽게 다시사용 할 수 있게 만든것
+
+        //익명함수
+            //함수를만든다
+            // var func = function(){
+            // var output = prompt("숫자를 입력하시오","숫자");
+            // alert(output);
+            // };
+            // func();//함수호출
+        //형태는 함수지만 이름이 없으므로 익명함수라고 한다.
+
+        //선언적 함수
+        // function 함수(){alert("A")};
+        // function 함수(){alert("B")};
+        // 함수();//B
+        //뒤에 위치하는 함수가 실행된다.
+
+
+        
+        //매개변수와 리턴값
+        // function f(x){
+        //     return x*x;
+        // }
+        // alert(f(3)); //9
+        //f(x) = 함수이름, x = 매개변수, x*x = 리턴값
+
+
+        //가변인자함수
+        //매개변수의 개수가 변할수 있는 함수, 가변인자함수는 매개변수를 선언된 형태와 다르게 사용했을 때 매개변수를 모두 활용하는 함수를 뜻한다
+        // function sumAll(){
+        //     alert(typeof (arguments) + ':' + arguments.length);
+        // }
+        // sumAll(1,2,3,4,5,6,7,8,9,10); //object : 10
+        //배열은 객체자료형이므로 object를 출력 열개의 매개변수를 입력했으므로 arguments배열의 length속성값이 10으로 출력된다.
+
+
+        //리턴 값
+        //리턴을 사용하면 함수는 값이된다.
+        //리턴을 사용하면 값을 지정하지 않아도 함수를 호출한 곳으로 돌아간다.
+        // function returnFunc(){
+        //     alert("문장A");
+        //     return;
+        //     alert("문장B");
+        // }
+        // returnFunc(); //문장A
+        //리턴키워드를 문장B이전에 사용했으므로 해당위치에서 함수가 종료된다. 따라서 문장A가 출력되는 결과를 볼 수 있다.
+
+        //콜백함수
+        //자바스크립트에서는 함수도 하나의 자료형이므로 매개변수로 전달할 수 있습니다. 이렇게
+        //매개변수로 전달하는 함수를 콜백함수라고 한다
+        // function callTenTimes(callback){
+        //     for(var i = 0; i<10; i++){
+        //         callback(); //매개변수로 전달된 함수를 호출한다.
+        //     }
+        // }
+        // var callback = function(){
+        //     alert("함수호출");
+        // }
+        // callTenTimes(callback); //함수호출이 10번 반복된다.
+        // //함수를 매개변수로 넣을 수 있다.
+
+
+        //클로저
+        //함수안에있는 변수는 지역변수이므로 함수외부에서 사용할수없다 지역변수는 함수가 실행될때 생성되고 
+        //함수가 종료될때 사라진다. 하지만 클로저를 이용하면 이를 위반해서 사용할 수 있다.
+        // function test(name){
+        //     var output = 'hello ' +name+ '..!';
+        //     return function(){
+        //         alert(output);
+        //     }
+        // }
+        // test('js')(); //hello js..!
+        //지역변수 output은 함수가 종료될때 사라져야 하지만 해당변수가 이후에도 사용가능할수 있으니 자바스크립트는 이를 살려둔다
+
+
+
+        //반복문과 콜백함수
+
+        //자바스크립트의 실행순서때문에 발생하는 예시와 이를 클로저를 통해 해결하는 방법에 대해서 알아봅시다.
+    
+        // for(let i = 0; i<3; i++){
+        //     setTimeout(function(){
+        //         alert(i);
+        //     },0);
+        // } //3이 3번 반복되서 출력된다.
+        //이는 setTimeout함수를 호출하는 시점이 반복문이 모두 끝난 이후이므로 발생하는 문제이다.
+
+        //클로저를 이용해서 문제해결
+        // for(var i =0; i<3; i++){
+        //     (function(close_i){
+        //         setTimeout(function(){
+        //             alert(close_i);
+        //         },0);
+        //     })(i);
+        // }                         //0,1,2가 차례대로 출력되는것을 볼 수 있다.
+        //반복문을 실행하는 동안 클로저가 생성되어 변수 close_i값을 저장할 수 있다.
+
+
+        //화살표 함수
+        //익명함수이며 기존의 코드를 더 쉽게 사용하기위한 문법의 추가라고 한다.
+        // function (){} 를 화살표함수를 이용하면 ()=>{}처럼 쓸 수 있다.
+        //ed6부터 도입된 문법이다.
+        //코드가 한줄이면 중괄호를 생략해도 되며 return키워드를 사용하지 않아도 값을 리턴한다
+        
+        // const multiply = (a,b)=> a*b;
+        // alert(multiply(1,2));  //2
+        // alert(multiply(3,4));  //12
+        // 이렇게 사용하면 된다.
+
+
+        
+    </script>
+</head>
+<body>
+</body>
+</html>

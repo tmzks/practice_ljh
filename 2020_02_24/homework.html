@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="textboxOne">
+    <input type="text" id="textboxTwo">
+    <button onclick="compareAndPrint()">click</button>
+    <div id="comparedResult">
+
+    </div>
+</body>
+<script>
+    function compareAndPrint(){
+        let textBoxOne = document.getElementById('textboxOne'); //10 
+        let textBoxTwo = document.getElementById('textboxTwo');
+        let comparedResult = document.getElementById('comparedResult');
+        console.log(comparedResult);
+        // console.log(textBoxOne);
+        // console.log(textBoxTwo);
+        if(textBoxOne.value > textBoxTwo.value){
+            comparedResult.innerText = `${textBoxOne.value}이 ${textBoxTwo.value}보다 큽니다.`;
+        }else if(textBoxOne.value === textBoxTwo.value){
+            comparedResult.innerText = `${textBoxOne.value}와 ${textBoxTwo.value}이 같습니다.`;
+        }else{
+            comparedResult.innerText = `${textBoxTwo.value}이 ${textBoxOne.value}보다 큽니다.`;
+        }
+        textBoxOne.value = "";
+        textBoxTwo.value = "";
+
+    }
+//두개의 input태그의 값을 받아와서 비교한 뒤 div태그에 텍스트로 결과를 표현 하라 . 
+//1. 두개의 input 태그를 만든다. 
+//2. 식별 가능한 id를 태그에 전달한다. 
+//3. 버튼을 만든다. 
+//4. 버튼의 이벤트를만든다
+//5. 비교할 정보를 가져온다.
+//6. 비교한다
+//7. div의 제어권을 가져온다.
+// 8. 비교결과를 화면에 나타낸다. 
+
+//리셋
+// 1. textboxOne의 통제권과 textboxTwo의 통제권을 가져온다
+// 2. if문 종료 후에 textboxOne의 통제권과 textboxTwo의 통제권의 value프로퍼티를 ""(빈문자열)로 재할당한다.
+</script>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="header">header</h1>
+    <h1 onclick="whenClick(event)">Click</h1>
+    <form id="my-form">
+        <label for="name">이름</label><br/>
+        <input type="text" name="name" id="name"><br/>
+        <label for="pass">비밀번호</label>
+        <input type="password" name="pass" id="pass"><br/>
+        <label for="pass-check">비밀번호확인</label>
+        <input type="password" id="pass-check"><br/>
+        <input type="submit" value="제출">
+    </form>
+</body>
+<script>
+    //이벤트
+
+    //이벤트용어연습
+    // window.onload = function(){
+    //     let header = document.getElementById('header');
+    //     //이벤트연결
+    //     function whenClick(){
+    //         alert('CLICK');
+    //     }
+    //     header.onclick = whenClick();
+    // }
+
+    //이벤트 핸들러안에서의 this키워드
+    // window.onload = function(){
+    //     document.getElementById('header').onclick = function(){
+    //         alert(this);
+    //     }
+    // }
+    //heaer를 클릭하면 경고창에 [object HTMLHeadingElement]가 출력된다.
+
+    //이벤트객체
+    // window.onload = function(){
+    //     document.getElementById('header').onclick = function(e){
+    //         let event = e || window.event; //e가 존재하면 e를 event에 집어넣고 e가 undefined면 window.event속성을 변수 event에 넣는 조건문
+
+    //         document.body.innerHTML = '';
+    //         for(let key in event){
+    //             document.body.innerHTML +='<p>' + key + ':' + event[key] + '</p>';
+    //         }
+    //     }
+    // }
+    //header부분을 클릭하면 이벤트와 관련된 모든 내용이 출력된다.
+
+
+    //인라인 이벤트 모델 - 함수호출
+        // function whenClick(e){
+        //     alert('클릭');
+        // }
+    //이벤트객체를 전달하는 방법
+
+    //유효성검사
+        window.onload = function(){
+            document.getElementById('my-form').onsubmit = function(){
+                let pass = document.getElementById('pass').value;
+                let passCheck = document.getElementById('pass-check').value;
+                if(pass === passCheck){
+                    alert('success');
+                }else{
+                    alert('re write..');
+                    return false;
+                }
+            }
+        }
+</script>
+</html>

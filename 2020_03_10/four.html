@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    //4장 반복문
+    for(let i =0; i<10; i++){
+        alert('출력');
+    }
+
+    //배열
+    let array = [10,20,30];
+    alert(array[0]);
+    alert(array[1]);
+    alert(array[2]);
+    //10 20 30
+
+    //push()
+    let array = [0,1];
+    array.push(2);
+    array.push(3);
+    array.push(4);
+    //0,1,2,3,4
+
+    //while반복문
+    let value = 0;
+    while(value<5){
+        alert(value + ' 번째 반복');
+        value++;
+    }
+    //0,1,2,3,4
+
+    //do while반복문
+    let value = 0;
+    do{
+        alert(value + ' 번째 반복');
+        value++;
+    }while(value<5)
+
+    //for
+    let arr = [1,2,3,4,5];
+    for(let i =0; i<arr.length; i++){
+        alert(arr[i]);
+    }
+
+    //for in
+    let arr = [1,2,3,4,5];
+    for(let i in arr){
+        alert(arr[i]);
+    }
+
+    for(let i=0; i<arr.length; i++){
+        alert(arr[i]);
+    }
+
+    //for of
+    for(const element of [1,2,3,4]){
+        alert(`요소는 ${element}입니다.`);
+    }
+
+    
+</script>
+</html>

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{margin: 0; padding: 0;}
+        .container{
+            width: 300px;
+            margin: 50px auto;
+            border: 1px solid red;
+        }
+        .form input{
+            width: 90%;
+        }
+        .form2 input{
+            width: 80%;
+        }
+        #signup{
+            margin-top: 20px;
+            display: block;
+            width: 100%;
+            height: 50px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="member">
+            <h1>회원가입</h1>
+
+            <div class="label">아이디</div>
+            <div class="form">
+                <input type="text" id="userid" size="12" maxlength="12" placeholder="아이디를 입력하시오">
+            </div>
+
+            <div class="label">비밀번호</div>
+            <div class="form">
+                <input type="password" id="userpassword" placeholder="비밀번호를 입력하시오">
+            </div>
+
+            <div class="label">비밀번호 확인</div>
+            <div class="form">
+                <input type="password" id="passwordconfirm" placeholder="비밀번호 재확인">
+            </div>
+
+            <div class="label">이메일</div>
+            <div class="form">
+                <input type="email" id="useremail" placeholder="이메일을 입력해주세요">
+            </div>
+            <!-- <div class="label">이메일</div>
+                <input type="text" id="email" name="email" placeholder="알파벳+숫자@알파벳+숫자"/>
+         -->
+
+            <div class="label">전화번호</div>
+            <div class="form">
+                <input type="text" id="userphone" placeholder="전화번호를 입력해주세요">
+            </div>
+
+            <div class="label">별명</div>
+            <div class="form">
+                <input type="text" id="usernickname" placeholder="별명을 입력해주세요">
+            </div>
+
+            <button id="signup" onclick="join()">회원가입하기</button>
+        </div>
+    </div>
+</body>
+<script>
+    //정규표현식 <- 이메일 형식(); htmah2@naver.com
+    //유효성검사
+
+    //id //3글자이상 한글 안됨  
+    //비밀번호,비밀번호 확인 //3글자이상 영어만 됨, 두개 인풋이 동일해야 통과 
+    //이메일 //이메일 형식에 맞아야 됨 
+    //전화번호 //비어도 상관없음 
+    //별명 //두글자 이상 
+    //버튼 <-버튼을 누르면 오류들이 나온다 . alert
+
+
+    let func = function(){
+        let userid = document.getElementById("userid");
+        let userpassword = document.getElementById("userpassword");
+        let userconfirm = document.getElementById("passwordconfirm");
+        let useremail = document.getElementById("useremail");
+        let userphone = document.getElementById("userphone");
+        let usernickname = document.getElementById("usernickname");
+
+        //아이디 패스워드값 데이터 정규화 공식
+        const idPwRegex = /^[a-zA-Z0-9]{4,12}$/;
+        const phoneRegex =/(^02.{0}|^01.{1}|[0-9]{3})([0-9]+)([0-9]{4})/g;
+        console.log('id : ' +userid.value);
+        // console.log(checker.test(userid.value));
+        const emailRegex = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/;
+         //이메일 데이터 정규화 공식
+        console.log('email :' + useremail.value);
+        console.log(emailRegex.test(useremail.value));
+        const nickCheck = /^[가-힝a-zA-Z]{2,}$/;
+        console.log('별명 :' + usernickname.value);
+        console.log(nickCheck.test(usernickname.value));
+
+        
+        if(userid.value === ""){
+            alert("id가 입력되지 않았습니다.");
+            userid.focus();
+            return false;
+        }
+
+        if(!idPwRegex.test(userid.value)){
+            alert("id는 4글자 이상 영어와 숫자로 이루어진 12글자 이내여야 합니다.");
+            userid.focus();
+            return false;
+        }
+
+        if(userpassword.value === ""){
+            alert("pw가 입력되지 않았습니다.");ㅣ
+            userpassword.focus();
+            return false;
+        }
+        //비밀번호와 비밀번호 확인이 일치 하지 않을 경우
+        if ((userpassword.value)!==(userconfirm.value)) {
+            alert("비밀번호가 일치 하지 않습니다.");
+            userpassword.focus();
+            userconfirm.focus();
+            return false;
+        }
+        // //이메일 입력 안했을 경우
+        if ((useremail.value) == "") {
+            alert("이메일을 입력해 주세요");
+            useremail.focus();
+            return false;
+        }
+        // //이메일이 잘못된 경우
+        if (!emailRegex.test(useremail.value)) {
+            alert('email 양식에 맞게 작성해주세요');
+            useremail.focus();
+            return false;
+        }
+        // //이름 입력 안 한 경우
+        if ((usernickname.value)=="") {
+            alert("이름을 입력해 주세요");
+            usernickame.focus();
+            return false;
+        }
+        if(!phoneRegex.test(userphone.value)){
+            alert("전화번호 양식에 맞게작성해주세요");
+            return false;
+        }
+
+        return true;
+        // //이름에 특수 문자가 들어간 경우
+        // if (!check(nickCheck,usernickname,"이름이 잘못 되었습니다.")) {
+        //     return false;
+        // }
+    }
+
+function join(){
+    if(func()){
+        alert("회원가입이 되었습니다.");
+    }
+}
+
+
+    
+
+
+
+
+
+</script>
+</html>

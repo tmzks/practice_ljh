@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+    </style>
+</head>
+
+<body onload="print(users)">
+
+    <table id="tbl" border="1" align="center">
+        <thead>
+            <th>번호</th>
+            <th>이름</th>
+            <th>연락처</th>
+        </thead>
+        <tbody id="my-tbody">
+
+        </tbody>
+    </table>
+
+    <input type="text" id="insertName" placeholder="이름을 입력해주세요"><input type="text" id="insertNumb"
+        placeholder="번호를 입력해주세요">
+
+    <input type="button" onclick="insertFunction()" id=“insert” name="insert" value="추가하기">
+    <input type="button" id="del" name="del" value="삭제하기" onclick="deleteUser()"/>
+    <input type="button" id="serch" name="serch" value="찾아보기" onclick="findUsers()" />
+
+    <!-- input name, input phone numb  -->
+</body>
+<script>
+    let users = [{
+        name: "ljw",
+        phoneNumber: "01011112222"
+    }, {
+        name: "ljh",
+        phoneNumber: "01012345555"
+    }];
+    let user = new Object();
+    let keys = ['이름', '연락처'];
+
+    //딜리트 로직 
+    //1. name과 number 박스에 값을 입력하고 해당 하는 객체를 삭제 시킨다 . 
+
+    function findUsers(){
+        let insertName = document.getElementById('insertName');
+        print(users.filter((e)=>{
+            return e.name === insertName.value;
+        }));
+
+    }
+
+
+    function deleteUser(){
+        let insertNumb = document.getElementById('insertNumb');
+        users = users.filter((e)=>{
+            return e.phoneNumber !== insertNumb.value;
+        })
+
+        print(users.slice());
+    }
+
+    function print(users) {
+        deleteRow();
+        const my_tbody = document.getElementById('my-tbody');
+
+        for (let i = 0; i < users.length; i++) {
+            //이 for문은 왜 만들었는가 
+            const row = my_tbody.insertRow(my_tbody.rows.length); // 하단에 추가
+            const cell = row.insertCell(0);
+            const cell1 = row.insertCell(1);
+            const cell2 = row.insertCell(2);
+            cell.innerText = i;
+            cell1.innerHTML = users[i].name;
+            cell2.innerHTML = users[i].phoneNumber;
+        }
+    }
+
+    function deleteRow() {
+        let my_tbody = document.getElementById('my-tbody');
+        if (my_tbody.rows.length < 1) return;
+        // my_tbody.deleteRow(0); // 상단부터 삭제
+        while(my_tbody.rows.length > 0){
+            //deleteRow 메서드는 매개변수로 들어온 숫자에 해당하는 row를 삭제 시킨다. 
+            my_tbody.deleteRow(my_tbody.rows.length-1);
+        }
+    }
+
+    function insertFunction() {
+        let insertName = document.getElementById('insertName');
+        let insertNumb = document.getElementById('insertNumb');
+
+        if (insertName.value === "") {
+            alert("이름입력이 되지 않았습니다.");
+            insertName.focus();
+            return;
+        }
+        if (insertNumb.value === "") {
+            alert('번호가 입력되지 않았습니다.');
+            insertNumb.focus();
+            return;
+        }
+        users.push({
+            name: insertName.value,
+            phoneNumber: insertNumb.value
+        })
+
+        print(users.slice());
+    }
+</script>
+
+</html>

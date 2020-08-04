@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #container{
+            width: 500px;
+            height : 500px;
+            border : 1px solid black;
+            position: relative;
+            
+        }
+        #mouseMovement{
+            width: 10px;
+            height: 10px;
+            background-color: brown;
+            position:absolute;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="mouseMovement"></div>
+    </div>
+</body>
+
+<script>
+    let container = document.getElementById("container");
+    let mouseMovement = document.getElementById("mouseMovement");
+    //마우스를 졸졸 따라다니는 div만들기 
+    //1. 마우스좌표에 대한 정보가 필요하다.
+    //2. mousemove
+    //3. container의 통제권(dom node)을 가져온다.
+    //4. mouseMovement의 통제권(dom node)를 가져온다.
+    //5. mouseMovement의left와 top을 이벤트가 발생할때마다 offsetX의값과 offsetY의 값으로 바꿔준다.
+    container.addEventListener("mousemove",(e)=>{
+        // console.log(e.offsetY);
+        mouseMovement.style.top = e.offsetY + "px";
+        mouseMovement.style.left = e.offsetX + "px";
+        
+    });
+</script>
+</html>

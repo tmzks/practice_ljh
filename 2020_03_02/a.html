@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .article {
+            width: 200px;
+            height: 350px;
+            border: 1px solid black;
+            margin: 0 auto;
+            margin-top: 15px;
+        }
+
+        .writeBox {
+            width: 90%;
+            height: 260px;
+        }
+
+        .writeButton {
+            width: 100%;
+            height: 40px;
+            display: inline-block;
+        }
+
+        .mainBox {
+            margin: 0 auto;
+            width: 300px;
+            border: 1px dotted black;
+            overflow-y: auto;
+            height: 100vh;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="mainBox" class="mainBox">
+        <div class="article">
+            <textarea id="textBox" class="writeBox"></textarea>
+            <input id="password" placeholder="비밀번호">
+            <button class="writeButton" onclick="getManager().newArticle()">글쓰기</button>
+        </div>
+        <div id="articleList">
+
+        </div>
+    </div>
+</body>
+<script>
+    //게시물을 만들고 비밀번호가 일치하면 삭제 까지 
+    //로직
+    //1. 게시판내용과 비밀번호를 적은 것들을 어디에 보관하자
+    //2. 보관된 내용을 화면에뿌린다
+    let manger;
+    {
+
+        function ArticleManager() {
+            let articleList = [];
+
+            this.write = function (){
+                const text = document.getElementById("textBox");
+                const pw = document.getElementById("password");
+
+                const newArticle = new Article(text.value, password.value);
+                articleList.push(newArticle);
+                const cloneArticleList = articleList.slice();
+                console.log(cloneArticleList);
+                return cloneArticleList;
+            }
+
+            this.delete = function (removeArticle){
+                articleList = articleList.filter((article)=>{
+                    return article !== removeArticle;
+                })
+                console.log(articleList)
+                return articleList;
+            }
+        }
+
+        function DisplayManager(){
+            const articleBox = document.getElementById("articleList");
+
+            this.print = function (articleList){
+                const childList = articleBox.childNodes;
+
+                for(let i = 0; i < childList.length; i++){
+                    console.log(childList)
+                    childList[i].remove();
+                }
+                for(article of articleList){
+                    const newRect = document.createElement('div');
+                    const removeButton = document.createElement('button');
+                    newRect.classList.add("article");
+                    newRect.innerText = article.getText();
+                    removeButton.innerText = "삭제";
+
+                    removeButton.addEventListener('click',()=>{
+                        let password = prompt("비밀번호를 입력하세요","");
+                        if(article.getPassword(password)){
+                            getManager().deleteArticle(article);
+                        }else{
+                            console.log("비밀번호가 일치 하지 않습니다.");
+                        }
+                    })
+                    newRect.appendChild(removeButton);
+                    
+                    articleBox.appendChild(newRect)
+                }
+            }
+            this.remove = function(){
+                const childList = articleBox.childNodes;
+                console.log(childList)
+
+                for(child of childList){
+                    articleBox.removeChild(child);
+                }
+            }
+        }
+
+        const articleManger = new ArticleManager();
+        const displayManger = new DisplayManager();
+        function Admin(){
+            this.newArticle = () => displayManger.print(articleManger.write());
+            this.deleteArticle = (removed)=> displayManger.print(articleManger.delete(removed))
+        }
+
+        manager = new Admin();
+    }
+    function getManager(){
+        return manager;
+    }
+
+    function Article(text, password) {
+        let articleText = text;
+        let articlePw = password;
+
+        this.getText = function () {
+            return articleText;
+        };
+
+        this.getPassword = function(password){
+            return articlePw == password;
+        }
+    }
+
+
+</script>
+
+</html>

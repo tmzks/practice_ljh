@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .photoFrame{
+            width:300px;
+            height: 300px;
+        }
+    </style>
+</head>
+<body>
+   <h1>이미지 불러오기</h1>
+   <input type="file" id="fileInput">
+   <div id="pictures"></div>
+</body>
+<script>
+    let fileInput = document.getElementById('fileInput');
+    fileInput.addEventListener('change',(e)=>{
+        console.log(e.target.files);
+        const file = e.target.files[0];
+        const reader = new FileReader();
+        reader.readAsDataURL(file); //파일을 읽는 메서드
+        reader.onload = function(){
+            var photoFrame = document.createElement('div');
+            photoFrame.style = `background : url(${reader.result}); background-size : cover`;
+            photoFrame.className = "photoFrame";
+            document.getElementById("pictures").appendChild(photoFrame);
+            e.target.value = "";
+            photoFrame.addEventListener("click",()=>{
+                document.getElementById('pictures').removeChild(photoFrame);
+            })
+        } 
+    })
+</script>
+</html>
